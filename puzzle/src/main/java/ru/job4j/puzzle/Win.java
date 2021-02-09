@@ -28,10 +28,9 @@ public class Win {
         boolean rsl = false;
         for (int index = 0; index < board.length; index++) {
             if (board[index][index] == 1) {
-                if (checkVertical(board, index)) {
+                if (checkVertical(board, index) || checkHorizontal(board, index)) {
                     rsl = true;
-                } else if (checkHorizontal(board, index)) {
-                    rsl = true;
+                    break;
                 }
             }
         }
