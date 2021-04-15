@@ -16,6 +16,7 @@ public class BishopBlack implements Figure {
         return position;
     }
 
+    @SuppressWarnings("checkstyle:InnerAssignment")
     @Override
     public Cell[] way(Cell dest) {
         if (!isDiagonal(position, dest)) {
@@ -27,9 +28,12 @@ public class BishopBlack implements Figure {
         Cell[] steps = new Cell[size];
         int deltaX = dest.getX() > position().getX() ? 1 : -1;
         int deltaY = dest.getY() > position().getY() ? 1 : -1;
+        int x = position().getX();
+        int y = position().getY();
         for (int index = 0; index < size; index++) {
-            steps[index] = Cell.findBy((position().getX() + deltaX * (index + 1)),
-                                        (position().getY() + deltaY * (index + 1)));
+            x += deltaX;
+            y += deltaY;
+            steps[index] = Cell.findBy(x, y);
         }
         return steps;
     }
